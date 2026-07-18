@@ -8,30 +8,27 @@ load_dotenv()
 base_dir = os.path.abspath(os.path.dirname(__file__))
 
 class Config:
-    SECRET_KEY = os.environ['SECRET_KEY']
+    SECRET_KEY = os.environ.get("SECRET_KEY", "wafu981r98147y45hf91")
 
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    SQLALCHEMY_ECHO = True # en produccion mejor ponerlo en False
 
-    if os.environ.get("RENDER"):
-        SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
-    else:
-        SQLALCHEMY_DATABASE_URI = fr"sqlite:///{os.path.join(base_dir, "db.sqlite")}"
-
-    if os.environ.get("RENDER"):
-        SESSION_TYPE = "filesystem"
-    else:
-        SESSION_TYPE = "redis"
-        SESSION_PERMANENT = False
-        SESSION_USE_SIGNER = True
-
-        REDIS_URL = os.environ.get("REDIS_URL", "redis://127.0.0.1:6379?protocol=2")
-        SESSION_REDIS = redis.from_url(REDIS_URL)
-    
     SESSION_COOKIE_HTTPONLY = True
     SESSION_COOKIE_SAMESITE = "Lax"
 
-    if os.environ.get("RENDER"):
-        SESSION_COOKIE_SECURE = True
-    else:
-        SESSION_COOKIE_SECURE = False
+class DevelopmentConfig(Config):
+    SQLALCHEMY_DATABASE_URI = fr"sqlite:///{os.path.join(base_dir, "db.sqlite")}"
+    SQLALCHEMY_ECHO = True
+
+    SESSION_TYPE = "redis"
+    SESSION_PERMANENT = False
+    SESSION_USE_SIGNER = True
+
+    SESSION_REDIS = redis.from_url("redis://127.0.0.1:6379?protocol=2")
+    SESSION_COOKIE_SECURE = False
+
+class ProductionConfig(Config):
+    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
+    SQLALCHEMY_ECHO = False
+
+    SESSION_TYPE = "filesystem"
+    SESSION_COOKIE_SECURE = True

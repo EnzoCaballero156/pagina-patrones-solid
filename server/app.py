@@ -3,7 +3,7 @@ from flask_cors import CORS
 from flask_session import Session
 from utils.misc import db, bcrypt
 from utils.app_builder import AppBuilder
-from config import Config
+from config import ProductionConfig
 
 from controllers.auth_controller import auth_bp
 from controllers.pedido_controller import pedido_bp
@@ -17,7 +17,7 @@ app = (
         .create_app(file=__name__)
             .set_static_folder("../client/dist")
             .set_static_url_path("/")
-        .configure(object=Config)
+        .configure(object=ProductionConfig)
         .register_bp(auth_bp, url_prefix="/api/auth")
         .register_bp(pedido_bp, url_prefix="/api/pedidos")
         .register_bp(user_bp, url_prefix="/api/auth")
@@ -27,7 +27,6 @@ app = (
 bcrypt.init_app(app)
 CORS(app, supports_credentials=True)
 server_session = Session(app)
-
 db.init_app(app)
 
 # ruta pagina principal
@@ -46,5 +45,4 @@ with app.app_context():
     db.create_all()
 
 if __name__ == "__main__":
-    # antes: app.run(debug=True)
     serve(app, host='0.0.0.0', port=5000)
