@@ -35,7 +35,7 @@ def registrar_usuario():
     if auth_service.usuario_existe(email): 
         return jsonify({'error': 'El usuario ya existe.'}), 409
 
-    hashed_password = bcrypt.generate_password_hash(password)
+    hashed_password = bcrypt.generate_password_hash(password).decode("utf-8") # decode para postgresql
     nuevo_usuario = auth_service.registrar_usuario(nombre, apellido, telefono, email, hashed_password)
 
     session['user_id'] = nuevo_usuario.id
