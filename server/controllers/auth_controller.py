@@ -39,6 +39,7 @@ def registrar_usuario():
     nuevo_usuario = auth_service.registrar_usuario(nombre, apellido, telefono, email, hashed_password)
 
     session['user_id'] = nuevo_usuario.id
+    session.modified = True
 
     return jsonify({
         "id": nuevo_usuario.id,
@@ -57,6 +58,7 @@ def iniciar_sesion():
         return jsonify({"error": "No autorizado."}), 401
 
     session['user_id'] = usuario.id
+    session.modified = True
 
     return jsonify({
         "id": usuario.id,
