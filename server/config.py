@@ -29,10 +29,9 @@ class Config:
         SESSION_REDIS = redis.from_url(REDIS_URL)
     
     SESSION_COOKIE_HTTPONLY = True
+    SESSION_COOKIE_SAMESITE = "Lax"
 
     if os.environ.get("RENDER"):
         SESSION_COOKIE_SECURE = True
-        SESSION_COOKIE_SAMESITE = "Lax"
     else:
         SESSION_COOKIE_SECURE = False
-        SESSION_COOKIE_SAMESITE = "Lax"
