@@ -1,0 +1,31 @@
+.select-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 18px;
+}
+.select-label {
+    margin-bottom: 6px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #333;
+}
+.select-input {
+    padding: 10px 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+    outline: none;
+    background: #fff;
+    transition: all 0.3s ease;
+}
+.select-input:focus {
+    border-color: #5A4FCF;
+    box-shadow: 0 0 5px rgba(90, 79, 207, 0.3);
+}
+.select-input:hover {
+    border-color: #5A4FCF;
+}
+.select-input:disabled {
+    background: #f2f2f2;
+    cursor: not-allowed;
+}

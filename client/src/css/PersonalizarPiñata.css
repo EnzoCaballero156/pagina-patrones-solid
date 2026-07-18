@@ -1,0 +1,14 @@
+.pagina-personalizar{
+    min-height:100vh;
+    background-image:url("../imagenes/Fondo.jpg");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+}
+
+.form-container{
+    display:flex;
+    justify-content:space-between;
+    gap:30px;
+    padding:40px;
+}

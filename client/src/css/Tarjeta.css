@@ -1,0 +1,44 @@
+/* TARJETA */
+.tarjeta-container {
+  position: relative;
+  width: 600px;
+  background: rgba(255, 255, 255, 0.753);
+  backdrop-filter: blur(5px);
+  overflow: hidden;
+  z-index: 1;
+  box-shadow: var(--sombra);
+}
+
+.amplia {
+  width: 90vw;
+}
+
+/* TARJETA LOGO */
+.tarjeta-logo {
+  background: white;
+  padding: 1px 5px;
+  text-align: center;
+}
+
+.tarjeta-logo img {
+  width: 500px;
+}
+
+/* FORMULARIO */
+.tarjeta-formulario {
+  padding: 50px 30px;
+  text-align: left;
+}
+
+.tarjeta-formulario h2 {
+  text-align: center;
+  margin: 0;
+  font-weight: normal;
+  font-size: 35px;
+}
+
+.tarjeta-formulario p {
+  text-align: center;
+  font-size: 15px;
+  margin-bottom: 20px;
+}
