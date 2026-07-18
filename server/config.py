@@ -27,3 +27,12 @@ class Config:
 
         REDIS_URL = os.environ.get("REDIS_URL", "redis://127.0.0.1:6379?protocol=2")
         SESSION_REDIS = redis.from_url(REDIS_URL)
+    
+    SESSION_COOKIE_HTTPONLY = True
+
+    if os.environ.get("RENDER"):
+        SESSION_COOKIE_SECURE = True
+        SESSION_COOKIE_SAMESITE = "None"
+    else:
+        SESSION_COOKIE_SECURE = False
+        SESSION_COOKIE_SAMESITE = "Lax"
