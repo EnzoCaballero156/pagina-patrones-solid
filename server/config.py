@@ -18,9 +18,12 @@ class Config:
     else:
         SQLALCHEMY_DATABASE_URI = fr"sqlite:///{os.path.join(base_dir, "db.sqlite")}"
 
-    SESSION_TYPE = "redis"
-    SESSION_PERMANENT = False
-    SESSION_USE_SIGNER = True
+    if os.environ.get("RENDER"):
+        SESSION_TYPE = "filesystem"
+    else:
+        SESSION_TYPE = "redis"
+        SESSION_PERMANENT = False
+        SESSION_USE_SIGNER = True
 
-    REDIS_URL = os.environ.get("REDIS_URL", "redis://127.0.0.1:6379?protocol=2")
-    SESSION_REDIS = redis.from_url(REDIS_URL)
+        REDIS_URL = os.environ.get("REDIS_URL", "redis://127.0.0.1:6379?protocol=2")
+        SESSION_REDIS = redis.from_url(REDIS_URL)
