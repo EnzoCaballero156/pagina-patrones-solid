@@ -22,15 +22,15 @@ $ .\venv\Scripts\Activate.ps1
 ```bash
 $ py -m pip install -r requirements.txt
 ```
-5. Por último, correr el servidor con el siguiente comando: py -m app
+5. Por último, correr el servidor con el siguiente comando, el cual operará en http://localhost:5000.
 ```bash
 $ py -m app
 ```
 
 ## Si no opera:
 Instalar Redis por la siguiente página: https://github.com/MicrosoftArchive/redis/releases
-1. Seleccionar Redis-x64-3.0.504.msi
-2. Verificar operatividad de Redis poniendo el siguiente comando en PowerShell:
+1. Seleccionar Redis-x64-3.0.504.msi y seguir los pasos de instalación.
+2. Una vez instalado, verificar operatividad de Redis ingresando el siguiente comando en PowerShell:
 ```bash
 $ redis-cli ping
 PONG
