@@ -14,7 +14,7 @@ class Config:
     SQLALCHEMY_ECHO = True # en produccion mejor ponerlo en False
 
     if os.environ.get("RENDER"):
-        SQLALCHEMY_DATABASE_URI = r"sqlite:////data/db.sqlite"
+        SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
     else:
         SQLALCHEMY_DATABASE_URI = fr"sqlite:///{os.path.join(base_dir, "db.sqlite")}"
 
