@@ -25,7 +25,7 @@ app = (
 )
 
 bcrypt.init_app(app)
-CORS(app, supports_credentials=True)
+CORS(app, supports_credentials=True, origins=["http://localhost:5173", "https://pagina-patrones-solid.onrender.com/"])
 server_session = Session(app)
 
 db.init_app(app)

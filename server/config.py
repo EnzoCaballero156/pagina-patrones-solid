@@ -32,7 +32,7 @@ class Config:
 
     if os.environ.get("RENDER"):
         SESSION_COOKIE_SECURE = True
-        SESSION_COOKIE_SAMESITE = "None"
+        SESSION_COOKIE_SAMESITE = "Lax"
     else:
         SESSION_COOKIE_SECURE = False
         SESSION_COOKIE_SAMESITE = "Lax"
